@@ -1,0 +1,91 @@
+# depslib dependency file v1.0
+1711043788 source:e:\workspace\codeblocks\workspace\test sdl\main.cpp
+	<iostream>
+	<SDL.h>
+
+1715286553 source:e:\workspace\codeblocks\workspace\sdl\test sdl\main.cpp
+	<bits/stdc++.h>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"Graphics.h"
+	"Tictactoe.h"
+	"click.h"
+
+1714205987 source:e:\workspace\codeblocks\workspace\sdl\test sdl\defs.cpp
+
+1715282924 source:e:\workspace\codeblocks\workspace\sdl\test sdl\graphics.cpp
+	"Graphics.h"
+	<SDL.h>
+	<SDL_image.h>
+
+1715273373 e:\workspace\codeblocks\workspace\sdl\test sdl\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"Tictactoe.h"
+
+1715281536 e:\workspace\codeblocks\workspace\sdl\test sdl\defs.h
+
+1715286553 source:e:\workspace\codeblocks\workspace\sdl\test sdl\tictactoe.cpp
+	"Tictactoe.h"
+	<bits/stdc++.h>
+
+1715286553 e:\workspace\codeblocks\workspace\sdl\test sdl\tictactoe.h
+
+1715283278 source:e:\workspace\codeblocks\workspace\sdl\test sdl\click,cpp.c
+
+1715285167 e:\workspace\codeblocks\workspace\sdl\test sdl\click.h
+	"Tictactoe.h"
+	"defs.h"
+	"Graphics.h"
+
+1715286553 source:e:\workspace\codeblocks\workspace\sdl\test sdl\click.cpp
+	"click.h"
+	"Graphics.h"
+	<bits/stdc++.h>
+	<SDL.h>
+
+1714205987 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\defs.cpp
+
+1715335102 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.cpp
+	"Graphics.h"
+	<SDL.h>
+	<SDL_image.h>
+
+1715273373 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"Tictactoe.h"
+
+1715281536 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\defs.h
+
+1715335477 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\tictactoe.h
+	<SDL.h>
+
+1715328970 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\main.cpp
+	<bits/stdc++.h>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	"Graphics.h"
+	"Tictactoe.h"
+	"click.h"
+
+1715285167 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click.h
+	"Tictactoe.h"
+	"defs.h"
+	"Graphics.h"
+
+1715328913 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click.cpp
+	"click.h"
+	"Graphics.h"
+	<bits/stdc++.h>
+	<SDL.h>
+
+1715328613 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\tictactoe.cpp
+	"Tictactoe.h"
+	"defs.h"
+	<bits/stdc++.h>
+
