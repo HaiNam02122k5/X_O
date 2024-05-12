@@ -6,6 +6,6 @@
 #include "Graphics.h"
 
 void processClick(int x, int y, Tictactoe& game);
-void clickMouse(Tictactoe& game, Graphics& graphic);
+void clickMouse(Tictactoe& game, Graphics& graphic, int &kq);
 
 #endif // CLICK_H

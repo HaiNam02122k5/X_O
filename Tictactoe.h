@@ -1,10 +1,7 @@
 #ifndef TICTACTOE_H
 #define TICTACTOE_H
 
-#define BOARD_SIZE 3
-#define EMPTY_CELL 0
-#define O_CELL 1
-#define X_CELL 2
+#include "defs.h"
 
 #include <SDL.h>
 

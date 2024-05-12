@@ -6,11 +6,14 @@
 
 #include "defs.h"
 #include "Tictactoe.h"
+#include "Button.h"
 
 struct Graphics{
     SDL_Renderer *renderer;
     SDL_Window *window;
-    SDL_Texture *cell, *cellX, *cellO;
+    SDL_Texture *cell, *cellX, *cellO,
+                *background1, *PlayBut, *CreditBut, *SettingBut, *QuitBut, *background2,
+                *BackBut, *AgainBut, *OWin, *XWin, *Qual;
 
     void logErrorAndExit(const char* mess, const char* error);
     void initSDL();
@@ -20,7 +23,10 @@ struct Graphics{
     void renderTexture(SDL_Texture* texture, int x, int y);
     void quitSDL();
     void initTexture();
+    void menu(Button PlayButton, Button CreditButton, Button SettingButton, Button QuitButton);
     void render(const Tictactoe& game);
+    void backgroundGame(const Tictactoe& game);
+    void winGame(int kq, Button AgainButton, Button BackButton);
 };
 
 #endif // GRAPHICS_H
