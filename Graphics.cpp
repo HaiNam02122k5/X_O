@@ -1,5 +1,6 @@
 #include "Graphics.h"
 #include "Button.h"
+#include "XAndO.h"
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -136,6 +137,8 @@ void Graphics::initTexture()
     SoundBut = loadTexture("img\\Button\\SoundButton1.png");
     nMusicBut = loadTexture("img\\Button\\MusicButton2.png");
     nSoundBut = loadTexture("img\\Button\\SoundButton2.png");
+    ChangeBut = loadTexture("img\\Button\\ChangeButton1.png");
+    nChangeBut = loadTexture("img\\Button\\ChangeButton2.png");
 }
 
 void Graphics::menu(Button PlayButton, Button CreditButton, Button SettingButton, Button QuitButton)
@@ -245,6 +248,94 @@ void Graphics::backgroundGame(const Tictactoe& game)
     presentScene();
 }
 
+void Graphics::render1(const XAndO& game)
+{
+    for (int i = 0; i < BOARD_SIZER; i++)
+        for (int j = 0; j < BOARD_SIZEC; j++) {
+            int x = BOARD_X1 + j * CELL_SIZE;
+            int y = BOARD_Y1 + i * CELL_SIZE;
+            switch (game.board[i][j]) {
+                case EMPTY_CELL: renderTexture(cell, x, y); break;
+                case X_CELL: renderTexture(cellX, x, y); break;
+                case O_CELL: renderTexture(cellO, x, y); break;
+            };
+        };
+    /*
+    //xanh
+        if(game.board[0][0]==1 and game.board[0][0]==game.board[1][1] and game.board[0][0]==game.board[2][2]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\O\\cheo1o.png");
+            renderTexture(cheo,BOARD_X,BOARD_Y);
+        }
+        if(game.board[0][2]==1 and game.board[0][2]==game.board[1][1] and game.board[0][2]==game.board[2][0]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\O\\cheo2o.png");
+            renderTexture(cheo,BOARD_X ,BOARD_Y);
+        }
+        if(game.board[0][0]==1 and game.board[0][0]==game.board[0][1] and game.board[0][2]==game.board[0][1]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\O\\hango.png");
+            renderTexture(cheo,BOARD_X,BOARD_Y-30);
+        }
+        if(game.board[1][0]==1 and game.board[1][0]==game.board[1][1] and game.board[1][2]==game.board[1][1]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\O\\hango.png");
+            renderTexture(cheo,BOARD_X ,BOARD_Y);
+        }
+        if(game.board[2][0]==1 and game.board[2][0]==game.board[2][1] and game.board[2][2]==game.board[2][1]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\O\\hango.png");
+            renderTexture(cheo,BOARD_X ,BOARD_Y+30);
+        }
+        if(game.board[0][0]==1 and game.board[1][0]==game.board[2][0] and game.board[0][0]==game.board[1][0]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\O\\coto.png");
+            renderTexture(cheo,BOARD_X-30 ,BOARD_Y);
+        }
+        if(game.board[0][1]==1 and game.board[1][1]==game.board[2][1] and game.board[0][1]==game.board[1][1]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\O\\coto.png");
+            renderTexture(cheo,BOARD_X ,BOARD_Y);
+        }
+        if(game.board[0][2]==1 and game.board[1][2]==game.board[2][2] and game.board[0][2]==game.board[1][2]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\O\\coto.png");
+            renderTexture(cheo,BOARD_X+30 ,BOARD_Y);
+        }
+
+    // do
+        if(game.board[0][0]==2 and game.board[0][0]==game.board[1][1] and game.board[0][0]==game.board[2][2]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\X\\cheo1x.png");
+            renderTexture(cheo,BOARD_X,BOARD_Y);
+        }
+        if(game.board[0][2]==2 and game.board[0][2]==game.board[1][1] and game.board[0][2]==game.board[2][0]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\X\\cheo2x.png");
+            renderTexture(cheo,BOARD_X ,BOARD_Y);
+        }
+        if(game.board[0][0]==2 and game.board[0][0]==game.board[0][1] and game.board[0][2]==game.board[0][1]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\X\\hangx.png");
+            renderTexture(cheo,BOARD_X,BOARD_Y-30);
+        }
+        if(game.board[1][0]==2 and game.board[1][0]==game.board[1][1] and game.board[1][2]==game.board[1][1]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\X\\hangx.png");
+            renderTexture(cheo,BOARD_X ,BOARD_Y);
+        }
+        if(game.board[2][0]==2 and game.board[2][0]==game.board[2][1] and game.board[2][2]==game.board[2][1]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\X\\hangx.png");
+            renderTexture(cheo,BOARD_X ,BOARD_Y+30);
+        }
+        if(game.board[0][0]==2 and game.board[1][0]==game.board[2][0] and game.board[0][0]==game.board[1][0]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\X\\cotx.png");
+            renderTexture(cheo,BOARD_X-30 ,BOARD_Y);
+        }
+        if(game.board[0][1]==2 and game.board[1][1]==game.board[2][1] and game.board[0][1]==game.board[1][1]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\X\\cotx.png");
+            renderTexture(cheo,BOARD_X ,BOARD_Y);
+        }
+        if(game.board[0][2]==2 and game.board[1][2]==game.board[2][2] and game.board[0][2]==game.board[1][2]){
+            SDL_Texture* cheo = loadTexture("img\\Tictactoe\\X\\cotx.png");
+            renderTexture(cheo,BOARD_X+30 ,BOARD_Y);
+        }*/
+
+//    renderTexture(cell, 10, 10);
+//    renderTexture(cellX, 110, 10);
+//    renderTexture(cellO, 210,10);
+
+    presentScene();
+}
+
 void Graphics::winGame(int kq, Button AgainButton, Button BackButton)
 {
     if(kq==1){
@@ -261,12 +352,14 @@ void Graphics::winGame(int kq, Button AgainButton, Button BackButton)
     presentScene();
 }
 
-void Graphics::gSetting(Button BackSetButton, Button SoundButton, Button MusicButton)
+void Graphics::gSetting(Button BackSetButton, Button SoundButton, Button MusicButton, Button ChangeButton, Button nChangeButton, bool play)
 {
     renderTexture(background3, 0, 0);
     renderTexture(BackSetBut, BackSetButton.posx, BackSetButton.posy);
     renderTexture(SoundBut, SoundButton.posx, SoundButton.posy);
     renderTexture(MusicBut, MusicButton.posx, MusicButton.posy);
+    if(play==true) renderTexture(ChangeBut, ChangeButton.posx, ChangeButton.posy);
+    else renderTexture(nChangeBut, nChangeButton.posx, nChangeButton.posy);
 
     presentScene();
 }

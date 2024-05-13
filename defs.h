@@ -7,9 +7,13 @@ const int WIDTH=600;
 
 #define BOARD_X 255
 #define BOARD_Y 255
+#define BOARD_X1 0
+#define BOARD_Y1 90
 #define CELL_SIZE 30
 
 #define BOARD_SIZE 3
+#define BOARD_SIZEC 20
+#define BOARD_SIZER 17
 #define EMPTY_CELL 0
 #define O_CELL 1
 #define X_CELL 2

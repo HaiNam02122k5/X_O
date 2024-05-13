@@ -37,10 +37,6 @@ void Sound::play(Mix_Music* gMusic)
     }
 }
 
-void volumeMusic(int k){
-
-}
-
 void Sound::quit(){
     Mix_Quit();
 }

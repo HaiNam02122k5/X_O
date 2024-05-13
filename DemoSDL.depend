@@ -48,26 +48,28 @@
 
 1714205987 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\defs.cpp
 
-1715574478 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.cpp
+1715579795 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.cpp
 	"Graphics.h"
 	"Button.h"
+	"XAndO.h"
 	<SDL.h>
 	<SDL_image.h>
 
-1715574478 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.h
+1715579795 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	"defs.h"
 	"Tictactoe.h"
 	"Button.h"
+	"XAndO.h"
 
-1715572295 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\defs.h
+1715577811 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\defs.h
 
 1715506635 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\tictactoe.h
 	"defs.h"
 	<SDL.h>
 
-1715573759 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\main.cpp
+1715586222 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\main.cpp
 	<bits/stdc++.h>
 	<SDL.h>
 	<SDL_image.h>
@@ -77,13 +79,15 @@
 	"Tictactoe.h"
 	"click.h"
 	"Sound.h"
+	"XAndO.h"
+	"click1.h"
 
 1715572295 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click.h
 	"Tictactoe.h"
 	"defs.h"
 	"Graphics.h"
 
-1715572295 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click.cpp
+1715583649 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click.cpp
 	"click.h"
 	"Graphics.h"
 	"defs.h"
@@ -101,13 +105,43 @@
 1715511640 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\button.h
 	<SDL.h>
 
-1715573776 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\sound.cpp
+1715586127 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\sound.cpp
 	"Sound.h"
 	"defs.h"
 	<SDL.h>
 	<SDL_mixer.h>
 
-1715573759 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\sound.h
+1715586222 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\sound.h
 	<SDL_mixer.h>
 	"defs.h"
+
+1715577863 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\5x5.h
+	"defs.h"
+	<SDL.h>
+
+1715577811 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\5x5.cpp
+	"5x5.h"
+	"defs.h"
+	<bits/stdc++.h>
+
+1715579714 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\xando.h
+	"defs.h"
+	<SDL.h>
+
+1715579714 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\xando.cpp
+	"XAndO.h"
+	"defs.h"
+	<bits/stdc++.h>
+
+1715578097 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click1.h
+	"XAndO.h"
+	"defs.h"
+	"Graphics.h"
+
+1715583037 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click1.cpp
+	"click1.h"
+	"Graphics.h"
+	"defs.h"
+	<bits/stdc++.h>
+	<SDL.h>
 

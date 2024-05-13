@@ -8,6 +8,8 @@
 #include "Tictactoe.h"
 #include "click.h"
 #include "Sound.h"
+#include "XAndO.h"
+#include "click1.h"
 
 using namespace std;
 
@@ -24,6 +26,8 @@ Button MusicButton(230, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
 Button SoundButton(320, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
 Button nMusicButton(230, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
 Button nSoundButton(320, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
+Button ChangeButton(255, 410, BUTTON_HE, BUTTON_W);
+Button nChangeButton(255, 410, BUTTON_HE, BUTTON_W);
 
 void waitPressed()
 {
@@ -48,8 +52,10 @@ int main(int argc, char* argv[])
     bool quitGame = false;
     bool quitMenu = false;
     bool play = false;
+    bool play1 = false;
     bool setting = false;
     bool hMusic = true;
+    bool tmp=true;
     while(!quitGame){
         //quitGame = true;
         while(!quitMenu){
@@ -64,8 +70,15 @@ int main(int argc, char* argv[])
                     case SDL_MOUSEBUTTONDOWN:
                         if(PlayButton.Inside(&e)){
                             //cerr << "trong" << endl;
-                            play=true;
-                            quitMenu=true;
+                            if(tmp==true){
+                                play=true;
+                                play1=false;
+                                quitMenu=true;
+                            }else{
+                                play=false;
+                                play1 = true;
+                                quitMenu=true;
+                            }
                             break;
                         }
                         if(CreditButton.Inside(&e)){
@@ -74,6 +87,8 @@ int main(int argc, char* argv[])
                         if(SettingButton.Inside(&e)){
                             setting=true;
                             quitMenu=true;
+                            play=false;
+                            play1=false;
                             break;
                         }
                         if(QuitButton.Inside(&e)) exit(0);
@@ -128,8 +143,26 @@ int main(int argc, char* argv[])
             }
         }
 
+        while(play1){
+            int kq=0;
+            XAndO game;
+            game.init();
+            graphic.render1(game);
+            graphic.renderTexture(graphic.BackSetBut, BackSetButton.posx, BackSetButton.posy);
+            graphic.presentScene();
+            //game.print();
+
+            clickMouse1(game, graphic, kq, BackSetButton);
+            //cout << kq << endl;
+            if(kq==3){
+                quitMenu = false;
+                quitGame = false;
+                break;
+            }
+        }
+
         if(setting){
-            graphic.gSetting(BackSetButton,SoundButton,MusicButton);
+            graphic.gSetting(BackSetButton,SoundButton,MusicButton, ChangeButton, nChangeButton, tmp);
             SDL_Event e;
             while(true){
                 int x=0;
@@ -143,14 +176,35 @@ int main(int argc, char* argv[])
                             //cerr << "trong" << endl;
                             quitMenu = false;
                             quitGame = false;
+                            setting = false;
                             x=1;
                             break;
                         }
                         if(MusicButton.Inside(&e)){
                             if(hMusic==true){
                                 graphic.renderTexture(graphic.nMusicBut, nMusicButton.posx, nMusicButton.posy);
+                                graphic.presentScene();
+                                Mix_PauseMusic();
+                                hMusic = false;
+                            }else{
+                                graphic.renderTexture(graphic.MusicBut, MusicButton.posx, MusicButton.posy);
+                                graphic.presentScene();
+                                Mix_ResumeMusic();
+                                hMusic = true;
                             }
                         }
+                        if(ChangeButton.Inside(&e)){
+                            if(tmp==true){
+                                graphic.renderTexture(graphic.nChangeBut, nChangeButton.posx, nChangeButton.posy);
+                                graphic.presentScene();
+                                tmp = false;
+                            }else if(tmp==false){
+                                graphic.renderTexture(graphic.ChangeBut, ChangeButton.posx, ChangeButton.posy);
+                                graphic.presentScene();
+                                tmp = true;
+                            }
+                        }
+                        break;
                 }
                 if(x==1) break;
             }

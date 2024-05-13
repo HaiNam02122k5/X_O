@@ -11,7 +11,6 @@ struct Sound
     void init();
     Mix_Music *loadMusic(const char* path);
     void play(Mix_Music* gMusic);
-    void volumeMusic(int k);
     void quit();
 };
 

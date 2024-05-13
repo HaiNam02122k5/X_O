@@ -1,4 +1,4 @@
-#include "click.h"
+#include "click1.h"
 #include "Graphics.h"
 #include "defs.h"
 
@@ -7,18 +7,15 @@
 
 using namespace std;
 
-void processClick(int x, int y, Tictactoe& game, int& count) {
+void processClick1(int x, int y, XAndO& game) {
     // chuyển tọa độ màn hình x, y thành tọa độ hàng cột của game
-    int clickedCol = (x - BOARD_X) / CELL_SIZE;
-    int clickedRow = (y - BOARD_Y) / CELL_SIZE;
-    if(game.board[clickedRow][clickedCol]==0 and x>BOARD_X and y>BOARD_Y and x<BOARD_X+90 and y<BOARD_Y+90){
+    int clickedCol = (x - BOARD_X1) / CELL_SIZE;
+    int clickedRow = (y - BOARD_Y1) / CELL_SIZE;
+    if(game.board[clickedRow][clickedCol]==0)
         game.move(clickedRow, clickedCol);
-        count ++;
-    }
-
 }
 
-void clickMouse(Tictactoe& game, Graphics& graphic, int &kq, Button BackSet)
+void clickMouse1(XAndO& game, Graphics& graphic, int &kq, Button BackSet)
 {
     int count=0;
     SDL_Event event;
@@ -36,13 +33,13 @@ void clickMouse(Tictactoe& game, Graphics& graphic, int &kq, Button BackSet)
                 }
                 SDL_GetMouseState(&x, &y);
                 //cerr << x << " " << y << endl;
-                processClick(x, y, game, count);
-                graphic.render(game);
-//                cerr << count << endl;
+                processClick1(x, y, game);
+                graphic.render1(game);
+//              cerr << count << endl;
 //              game.check(x,y);
                 break;
         }
-        if(game.check(x,y)==1){
+        /*if(game.check(x,y)==1){
             cout << "O Win" << endl;
             kq=1;
             break;
@@ -56,11 +53,11 @@ void clickMouse(Tictactoe& game, Graphics& graphic, int &kq, Button BackSet)
             kq=0;
             cout << "Hoa" << endl;
             break;
-        }
+        }*/
         if(count==10){
             kq=3;
             break;
         }
-        SDL_Delay(100);
+        SDL_Delay(50);
     }
 }
