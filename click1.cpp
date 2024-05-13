@@ -7,15 +7,18 @@
 
 using namespace std;
 
-void processClick1(int x, int y, XAndO& game) {
+void processClick1(int x, int y, XAndO& game, int& count, Sound sGame, Mix_Chunk* gSound, bool hSound) {
     // chuyển tọa độ màn hình x, y thành tọa độ hàng cột của game
     int clickedCol = (x - BOARD_X1) / CELL_SIZE;
     int clickedRow = (y - BOARD_Y1) / CELL_SIZE;
-    if(game.board[clickedRow][clickedCol]==0)
+    if(game.board[clickedRow][clickedCol]==0 and x>BOARD_X1 and y>BOARD_Y1 and (x<BOARD_X1+BOARD_SIZEC*CELL_SIZE) and (y<BOARD_Y1+BOARD_SIZER*CELL_SIZE)){
         game.move(clickedRow, clickedCol);
+        sGame.playSound(gSound, hSound);
+        count ++;
+    }
 }
 
-void clickMouse1(XAndO& game, Graphics& graphic, int &kq, Button BackSet)
+void clickMouse1(XAndO& game, Graphics& graphic, int &kq, Button BackSet, Sound sGame, Mix_Chunk* gSound, bool hSound)
 {
     int count=0;
     SDL_Event event;
@@ -27,13 +30,15 @@ void clickMouse1(XAndO& game, Graphics& graphic, int &kq, Button BackSet)
                 exit(0);
                 break;
             case SDL_MOUSEBUTTONDOWN:
+
                 if(BackSet.Inside(&event)){
+                    sGame.playSound(gSound, hSound);
                     count=10;
                     break;
                 }
                 SDL_GetMouseState(&x, &y);
                 //cerr << x << " " << y << endl;
-                processClick1(x, y, game);
+                processClick1(x, y, game, count, sGame, gSound, hSound);
                 graphic.render1(game);
 //              cerr << count << endl;
 //              game.check(x,y);

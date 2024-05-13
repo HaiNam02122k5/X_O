@@ -352,12 +352,14 @@ void Graphics::winGame(int kq, Button AgainButton, Button BackButton)
     presentScene();
 }
 
-void Graphics::gSetting(Button BackSetButton, Button SoundButton, Button MusicButton, Button ChangeButton, Button nChangeButton, bool play)
+void Graphics::gSetting(Button BackSetButton, Button SoundButton, Button MusicButton, Button nSoundButton, Button nMusicButton, Button ChangeButton, Button nChangeButton, bool play, bool hMusic, bool hSound)
 {
     renderTexture(background3, 0, 0);
     renderTexture(BackSetBut, BackSetButton.posx, BackSetButton.posy);
-    renderTexture(SoundBut, SoundButton.posx, SoundButton.posy);
-    renderTexture(MusicBut, MusicButton.posx, MusicButton.posy);
+    if(hSound==true) renderTexture(SoundBut, SoundButton.posx, SoundButton.posy);
+    else renderTexture(nSoundBut, nSoundButton.posx, nSoundButton.posy);
+    if(hMusic==true)renderTexture(MusicBut, MusicButton.posx, MusicButton.posy);
+    else renderTexture(nMusicBut, nMusicButton.posx, nMusicButton.posy);
     if(play==true) renderTexture(ChangeBut, ChangeButton.posx, ChangeButton.posy);
     else renderTexture(nChangeBut, nChangeButton.posx, nChangeButton.posy);
 

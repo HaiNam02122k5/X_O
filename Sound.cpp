@@ -25,7 +25,7 @@ Mix_Music* Sound::loadMusic(const char* path)
     return gMusic;
 }
 
-void Sound::play(Mix_Music* gMusic)
+void Sound::playMusic(Mix_Music* gMusic)
 {
     if (gMusic == nullptr) return;
 
@@ -36,6 +36,21 @@ void Sound::play(Mix_Music* gMusic)
         Mix_ResumeMusic();
     }
 }
+
+Mix_Chunk* Sound::loadSound(const char* path) {
+    Mix_Chunk* gChunk = Mix_LoadWAV(path);
+        if (gChunk == nullptr) {
+        SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR,
+            "Could not load sound! SDL_mixer Error: %s", Mix_GetError());
+    }
+}
+void Sound::playSound(Mix_Chunk* gChunk, bool hSound) {
+    if (gChunk != nullptr) {
+        if(hSound==true) Mix_PlayChannel( -1, gChunk, 0 );
+        else Mix_Pause(-1);
+    }
+}
+
 
 void Sound::quit(){
     Mix_Quit();

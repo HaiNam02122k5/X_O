@@ -46,8 +46,9 @@ int main(int argc, char* argv[])
 
     Sound sGame;
     sGame.init();
-    Mix_Music* gMusic = sGame.loadMusic("GameMusic.mp3");
-    sGame.play(gMusic);
+    Mix_Music* gMusic = sGame.loadMusic("sound\\GameMusic.mp3");
+    sGame.playMusic(gMusic);
+    Mix_Chunk* gSound = sGame.loadSound("sound\\click.wav");
 
     bool quitGame = false;
     bool quitMenu = false;
@@ -55,6 +56,7 @@ int main(int argc, char* argv[])
     bool play1 = false;
     bool setting = false;
     bool hMusic = true;
+    bool hSound = true;
     bool tmp=true;
     while(!quitGame){
         //quitGame = true;
@@ -68,8 +70,10 @@ int main(int argc, char* argv[])
                         exit(0);
                         break;
                     case SDL_MOUSEBUTTONDOWN:
+                        //sGame.playSound(gSound, hSound);
                         if(PlayButton.Inside(&e)){
                             //cerr << "trong" << endl;
+                            sGame.playSound(gSound, hSound);
                             if(tmp==true){
                                 play=true;
                                 play1=false;
@@ -82,9 +86,10 @@ int main(int argc, char* argv[])
                             break;
                         }
                         if(CreditButton.Inside(&e)){
-
+                            sGame.playSound(gSound, hSound);
                         }
                         if(SettingButton.Inside(&e)){
+                            sGame.playSound(gSound, hSound);
                             setting=true;
                             quitMenu=true;
                             play=false;
@@ -104,7 +109,7 @@ int main(int argc, char* argv[])
             graphic.render(game);
             //game.print();
 
-            clickMouse(game, graphic, kq, BackSetButton);
+            clickMouse(game, graphic, kq, BackSetButton, sGame, gSound, hSound);
             //cout << kq << endl;
             if(kq==3){
                 quitMenu = false;
@@ -123,6 +128,7 @@ int main(int argc, char* argv[])
                             exit(0);
                             break;
                         case SDL_MOUSEBUTTONDOWN:
+                            sGame.playSound(gSound, hSound);
                             if(BackButton.Inside(&e)){
                                 //cerr << "trong" << endl;
                                 quitMenu = false;
@@ -152,7 +158,7 @@ int main(int argc, char* argv[])
             graphic.presentScene();
             //game.print();
 
-            clickMouse1(game, graphic, kq, BackSetButton);
+            clickMouse1(game, graphic, kq, BackSetButton, sGame, gSound, hSound);
             //cout << kq << endl;
             if(kq==3){
                 quitMenu = false;
@@ -162,7 +168,7 @@ int main(int argc, char* argv[])
         }
 
         if(setting){
-            graphic.gSetting(BackSetButton,SoundButton,MusicButton, ChangeButton, nChangeButton, tmp);
+            graphic.gSetting(BackSetButton,SoundButton,MusicButton, nSoundButton, nMusicButton, ChangeButton, nChangeButton, tmp, hMusic, hSound);
             SDL_Event e;
             while(true){
                 int x=0;
@@ -172,6 +178,7 @@ int main(int argc, char* argv[])
                         exit(0);
                         break;
                     case SDL_MOUSEBUTTONDOWN:
+                        sGame.playSound(gSound, hSound);
                         if(BackSetButton.Inside(&e)){
                             //cerr << "trong" << endl;
                             quitMenu = false;
@@ -193,6 +200,19 @@ int main(int argc, char* argv[])
                                 hMusic = true;
                             }
                         }
+                        if(SoundButton.Inside(&e)){
+                            if(hSound==true){
+                                graphic.renderTexture(graphic.nSoundBut, nSoundButton.posx, nSoundButton.posy);
+                                graphic.presentScene();
+                                hSound = false;
+                                sGame.playSound(gSound, hSound);
+                            }else{
+                                graphic.renderTexture(graphic.SoundBut, SoundButton.posx, SoundButton.posy);
+                                graphic.presentScene();
+                                hSound = true;
+                                sGame.playSound(gSound, hSound);
+                            }
+                        }
                         if(ChangeButton.Inside(&e)){
                             if(tmp==true){
                                 graphic.renderTexture(graphic.nChangeBut, nChangeButton.posx, nChangeButton.posy);
@@ -211,6 +231,7 @@ int main(int argc, char* argv[])
         }
     }
 
+    if (gSound != nullptr) Mix_FreeChunk( gSound);
     if (gMusic != nullptr) Mix_FreeMusic( gMusic );
     sGame.quit();
     graphic.quitSDL();

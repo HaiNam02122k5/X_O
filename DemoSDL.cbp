@@ -36,10 +36,16 @@
 		<Unit filename="Button.h" />
 		<Unit filename="Graphics.cpp" />
 		<Unit filename="Graphics.h" />
+		<Unit filename="Sound.cpp" />
+		<Unit filename="Sound.h" />
 		<Unit filename="Tictactoe.cpp" />
 		<Unit filename="Tictactoe.h" />
+		<Unit filename="XAndO.cpp" />
+		<Unit filename="XAndO.h" />
 		<Unit filename="click.cpp" />
 		<Unit filename="click.h" />
+		<Unit filename="click1.cpp" />
+		<Unit filename="click1.h" />
 		<Unit filename="defs.cpp" />
 		<Unit filename="defs.h" />
 		<Unit filename="main.cpp" />

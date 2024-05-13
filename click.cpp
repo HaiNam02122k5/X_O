@@ -7,18 +7,19 @@
 
 using namespace std;
 
-void processClick(int x, int y, Tictactoe& game, int& count) {
+void processClick(int x, int y, Tictactoe& game, int& count, Sound sGame, Mix_Chunk* gSound, bool hSound) {
     // chuyển tọa độ màn hình x, y thành tọa độ hàng cột của game
     int clickedCol = (x - BOARD_X) / CELL_SIZE;
     int clickedRow = (y - BOARD_Y) / CELL_SIZE;
     if(game.board[clickedRow][clickedCol]==0 and x>BOARD_X and y>BOARD_Y and x<BOARD_X+90 and y<BOARD_Y+90){
         game.move(clickedRow, clickedCol);
+        sGame.playSound(gSound, hSound);
         count ++;
     }
 
 }
 
-void clickMouse(Tictactoe& game, Graphics& graphic, int &kq, Button BackSet)
+void clickMouse(Tictactoe& game, Graphics& graphic, int &kq, Button BackSet, Sound sGame, Mix_Chunk* gSound, bool hSound)
 {
     int count=0;
     SDL_Event event;
@@ -30,13 +31,15 @@ void clickMouse(Tictactoe& game, Graphics& graphic, int &kq, Button BackSet)
                 exit(0);
                 break;
             case SDL_MOUSEBUTTONDOWN:
+                //sGame.playSound(gSound, hSound);
                 if(BackSet.Inside(&event)){
+                    sGame.playSound(gSound, hSound);
                     count=10;
                     break;
                 }
                 SDL_GetMouseState(&x, &y);
                 //cerr << x << " " << y << endl;
-                processClick(x, y, game, count);
+                processClick(x, y, game, count, sGame, gSound, hSound);
                 graphic.render(game);
 //                cerr << count << endl;
 //              game.check(x,y);

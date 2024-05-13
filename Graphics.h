@@ -33,7 +33,7 @@ struct Graphics{
     void render1(const XAndO& game);
 
     void winGame(int kq, Button AgainButton, Button BackButton);
-    void gSetting(Button BackSetButton, Button SoundButton, Button MusicButton, Button ChangeButton, Button nChangeButton, bool play);
+    void gSetting(Button BackSetButton, Button SoundButton, Button MusicButton, Button nSoundButton, Button nMusicButton, Button ChangeButton, Button nChangeButton, bool play, bool hMusic, bool hSound);
 };
 
 #endif // GRAPHICS_H

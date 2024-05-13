@@ -10,7 +10,9 @@ struct Sound
     void logErrorAndExit(const char* mess, const char* error);
     void init();
     Mix_Music *loadMusic(const char* path);
-    void play(Mix_Music* gMusic);
+    void playMusic(Mix_Music* gMusic);
+    Mix_Chunk* loadSound(const char* path);
+    void playSound(Mix_Chunk* gChunk, bool hSound);
     void quit();
 };
 
