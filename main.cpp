@@ -1,11 +1,13 @@
 #include <bits/stdc++.h>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 
 #include "defs.h"
 #include "Graphics.h"
 #include "Tictactoe.h"
 #include "click.h"
+#include "Sound.h"
 
 using namespace std;
 
@@ -16,6 +18,10 @@ Button QuitButton(QUIT_BUTTON_X, QUIT_BUTTON_Y, BUTTON_HE, BUTTON_W);
 
 Button BackButton(BACK_BUTTON_X, BACK_BUTTON_Y, BUTTON_HE, BUTTON_W);
 Button AgainButton(AGAIN_BUTTON_X, AGAIN_BUTTON_Y, BUTTON_HE, BUTTON_W);
+
+Button BackSetButton(10, 10, BUTTON_HE, BUTTON_W);
+Button MusicButton(230, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
+Button SoundButton(320, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
 
 void waitPressed()
 {
@@ -32,9 +38,15 @@ int main(int argc, char* argv[])
     graphic.initTexture();
     //graphic.initSDL();
 
+    Sound sGame;
+    sGame.init();
+    Mix_Music* gMusic = sGame.loadMusic("GameMusic.mp3");
+    sGame.play(gMusic);
+
     bool quitGame = false;
     bool quitMenu = false;
     bool play = false;
+    bool setting = false;
     while(!quitGame){
         //quitGame = true;
         while(!quitMenu){
@@ -57,11 +69,12 @@ int main(int argc, char* argv[])
 
                         }
                         if(SettingButton.Inside(&e)){
-
+                            setting=true;
+                            quitMenu=true;
+                            break;
                         }
                         if(QuitButton.Inside(&e)) exit(0);
                 }
-
             }
         }
 
@@ -73,7 +86,7 @@ int main(int argc, char* argv[])
             graphic.render(game);
             //game.print();
 
-            clickMouse(game, graphic, kq);
+            clickMouse(game, graphic, kq, BackSetButton);
             //cout << kq << endl;
             graphic.winGame(kq, AgainButton, BackButton);
 
@@ -104,6 +117,10 @@ int main(int argc, char* argv[])
                 if(x==1) break;
                 if(x==2) break;
             }
+        }
+
+        if(setting){
+
         }
     }
 

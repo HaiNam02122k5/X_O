@@ -81,6 +81,17 @@ void Graphics::quitSDL()
     SDL_DestroyTexture(background2);
     background2 = nullptr;
 
+    SDL_DestroyTexture(BackBut);
+    BackBut = nullptr;
+    SDL_DestroyTexture(AgainBut);
+    AgainBut = nullptr;
+    SDL_DestroyTexture(OWin);
+    OWin = nullptr;
+    SDL_DestroyTexture(XWin);
+    XWin = nullptr;
+    SDL_DestroyTexture(Qual);
+    Qual = nullptr;
+
     IMG_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
@@ -102,9 +113,16 @@ void Graphics::initTexture()
     QuitBut = loadTexture("img\\Button\\QuitButton1.png");
     background2 = loadTexture("img\\background.png");
 
-    BackBut = loadTexture("img\\Button\\Button.png");
-    AgainBut = loadTexture("img\\Button\\Button.png");
+    BackBut = loadTexture("img\\Button\\BackButton1.png");
+    AgainBut = loadTexture("img\\Button\\AgainButton1.png");
     OWin = loadTexture("img\\Result\\oWin.png");
+    XWin = loadTexture("img\\Result\\xWin.png");
+    Qual = loadTexture("img\\Result\\qual.png");
+
+    MusicBut = loadTexture("img\\Button\\MusicButton1.png");
+    SoundBut = loadTexture("img\\Button\\SoundButton1.png");
+    nMusicBut = loadTexture("img\\Button\\MusicButton2.png");
+    nSoundBut = loadTexture("img\\Button\\SoundButton2.png");
 }
 
 void Graphics::menu(Button PlayButton, Button CreditButton, Button SettingButton, Button QuitButton)
@@ -215,7 +233,13 @@ void Graphics::backgroundGame(const Tictactoe& game)
 void Graphics::winGame(int kq, Button AgainButton, Button BackButton)
 {
     if(kq==1){
-        renderTexture(OWin, 225, 225);
+        renderTexture(OWin, 150, 150);
+    }
+    if(kq==2){
+        renderTexture(XWin, 150, 150);
+    }
+    if(kq==0){
+        renderTexture(Qual, 150, 150);
     }
     renderTexture(BackBut, BackButton.posx, BackButton.posy);
     renderTexture(AgainBut, AgainButton.posx, AgainButton.posy);

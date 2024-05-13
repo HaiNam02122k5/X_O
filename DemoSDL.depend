@@ -48,40 +48,42 @@
 
 1714205987 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\defs.cpp
 
-1715527782 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.cpp
+1715572806 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.cpp
 	"Graphics.h"
 	"Button.h"
 	<SDL.h>
 	<SDL_image.h>
 
-1715526800 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.h
+1715572961 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	"defs.h"
 	"Tictactoe.h"
 	"Button.h"
 
-1715530678 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\defs.h
+1715572295 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\defs.h
 
 1715506635 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\tictactoe.h
 	"defs.h"
 	<SDL.h>
 
-1715537620 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\main.cpp
+1715567035 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\main.cpp
 	<bits/stdc++.h>
 	<SDL.h>
 	<SDL_image.h>
+	<SDL_mixer.h>
 	"defs.h"
 	"Graphics.h"
 	"Tictactoe.h"
 	"click.h"
+	"Sound.h"
 
-1715527415 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click.h
+1715572295 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click.h
 	"Tictactoe.h"
 	"defs.h"
 	"Graphics.h"
 
-1715530011 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click.cpp
+1715572295 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click.cpp
 	"click.h"
 	"Graphics.h"
 	"defs.h"
@@ -98,4 +100,14 @@
 
 1715511640 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\button.h
 	<SDL.h>
+
+1715572961 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\sound.cpp
+	"Sound.h"
+	"defs.h"
+	<SDL.h>
+	<SDL_mixer.h>
+
+1715572656 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\sound.h
+	<SDL_mixer.h>
+	"defs.h"
 

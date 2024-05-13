@@ -16,6 +16,8 @@ const int WIDTH=600;
 
 #define BUTTON_W 90
 #define BUTTON_HE 50
+#define SMALL_BUTTON_W 50
+#define SMALL_BUTTON_H 50
 
 #define PLAY_BUTTON_X 255
 #define PLAY_BUTTON_Y 255
@@ -26,8 +28,8 @@ const int WIDTH=600;
 #define QUIT_BUTTON_X 255
 #define QUIT_BUTTON_Y 465
 #define BACK_BUTTON_X 180
-#define BACK_BUTTON_Y 400
+#define BACK_BUTTON_Y 470
 #define AGAIN_BUTTON_X 320
-#define AGAIN_BUTTON_Y 400
+#define AGAIN_BUTTON_Y 470
 
 #endif // DEFS_H

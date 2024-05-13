@@ -13,7 +13,8 @@ struct Graphics{
     SDL_Window *window;
     SDL_Texture *cell, *cellX, *cellO,
                 *background1, *PlayBut, *CreditBut, *SettingBut, *QuitBut, *background2,
-                *BackBut, *AgainBut, *OWin, *XWin, *Qual;
+                *BackBut, *AgainBut, *OWin, *XWin, *Qual,
+                *BackSetBut, *MusicBut, *SoundBut, *nMusicBut, *nSoundBut;
 
     void logErrorAndExit(const char* mess, const char* error);
     void initSDL();
@@ -27,6 +28,7 @@ struct Graphics{
     void render(const Tictactoe& game);
     void backgroundGame(const Tictactoe& game);
     void winGame(int kq, Button AgainButton, Button BackButton);
+    //void gSetting()
 };
 
 #endif // GRAPHICS_H

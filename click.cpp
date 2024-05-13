@@ -15,7 +15,7 @@ void processClick(int x, int y, Tictactoe& game) {
         game.move(clickedRow, clickedCol);
 }
 
-void clickMouse(Tictactoe& game, Graphics& graphic, int &kq)
+void clickMouse(Tictactoe& game, Graphics& graphic, int &kq, Button BackSet)
 {
     int count=0;
     SDL_Event event;
@@ -27,6 +27,10 @@ void clickMouse(Tictactoe& game, Graphics& graphic, int &kq)
                 exit(0);
                 break;
             case SDL_MOUSEBUTTONDOWN:
+                if(BackSet.Inside(&event)){
+                    count=10;
+                    break;
+                }
                 SDL_GetMouseState(&x, &y);
                 //cerr << x << " " << y << endl;
                 processClick(x, y, game);
@@ -49,6 +53,10 @@ void clickMouse(Tictactoe& game, Graphics& graphic, int &kq)
         if(count==9){
             kq=0;
             cout << "Hoa" << endl;
+            break;
+        }
+        if(count==10){
+            kq=3;
             break;
         }
         SDL_Delay(100);
