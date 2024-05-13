@@ -139,6 +139,8 @@ void Graphics::initTexture()
     nSoundBut = loadTexture("img\\Button\\SoundButton2.png");
     ChangeBut = loadTexture("img\\Button\\ChangeButton1.png");
     nChangeBut = loadTexture("img\\Button\\ChangeButton2.png");
+
+    CreditBG = loadTexture("img\\Credit.png");
 }
 
 void Graphics::menu(Button PlayButton, Button CreditButton, Button SettingButton, Button QuitButton)
@@ -363,5 +365,11 @@ void Graphics::gSetting(Button BackSetButton, Button SoundButton, Button MusicBu
     if(play==true) renderTexture(ChangeBut, ChangeButton.posx, ChangeButton.posy);
     else renderTexture(nChangeBut, nChangeButton.posx, nChangeButton.posy);
 
+    presentScene();
+}
+
+void Graphics::gCredit(Button BackSetButton){
+    renderTexture(CreditBG, 0, 0);
+    renderTexture(BackSetBut, BackSetButton.posx, BackSetButton.posy);
     presentScene();
 }

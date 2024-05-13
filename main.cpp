@@ -54,6 +54,7 @@ int main(int argc, char* argv[])
     bool quitMenu = false;
     bool play = false;
     bool play1 = false;
+    bool gCredit1 = false;
     bool setting = false;
     bool hMusic = true;
     bool hSound = true;
@@ -87,6 +88,11 @@ int main(int argc, char* argv[])
                         }
                         if(CreditButton.Inside(&e)){
                             sGame.playSound(gSound, hSound);
+                            gCredit1 = true;
+                            quitMenu = true;
+                            play=false;
+                            play1=false;
+                            break;
                         }
                         if(SettingButton.Inside(&e)){
                             sGame.playSound(gSound, hSound);
@@ -163,6 +169,7 @@ int main(int argc, char* argv[])
             if(kq==3){
                 quitMenu = false;
                 quitGame = false;
+                play1= false;
                 break;
             }
         }
@@ -178,8 +185,9 @@ int main(int argc, char* argv[])
                         exit(0);
                         break;
                     case SDL_MOUSEBUTTONDOWN:
-                        sGame.playSound(gSound, hSound);
+
                         if(BackSetButton.Inside(&e)){
+                            sGame.playSound(gSound, hSound);
                             //cerr << "trong" << endl;
                             quitMenu = false;
                             quitGame = false;
@@ -188,6 +196,7 @@ int main(int argc, char* argv[])
                             break;
                         }
                         if(MusicButton.Inside(&e)){
+                            sGame.playSound(gSound, hSound);
                             if(hMusic==true){
                                 graphic.renderTexture(graphic.nMusicBut, nMusicButton.posx, nMusicButton.posy);
                                 graphic.presentScene();
@@ -201,6 +210,7 @@ int main(int argc, char* argv[])
                             }
                         }
                         if(SoundButton.Inside(&e)){
+                            sGame.playSound(gSound, hSound);
                             if(hSound==true){
                                 graphic.renderTexture(graphic.nSoundBut, nSoundButton.posx, nSoundButton.posy);
                                 graphic.presentScene();
@@ -225,6 +235,31 @@ int main(int argc, char* argv[])
                             }
                         }
                         break;
+                }
+                if(x==1) break;
+            }
+        }
+
+        if(gCredit1){
+            graphic.gCredit(BackSetButton);
+            SDL_Event e;
+            while(true){
+                int x=0;
+                SDL_PollEvent(&e);
+                switch(e.type){
+                    case SDL_QUIT:
+                        exit(0);
+                        break;
+                    case SDL_MOUSEBUTTONDOWN:
+                        if(BackSetButton.Inside(&e)){
+                            sGame.playSound(gSound, hSound);
+                            //cerr << "trong" << endl;
+                            quitMenu = false;
+                            quitGame = false;
+                            gCredit1 = false;
+                            x=1;
+                            break;
+                        }
                 }
                 if(x==1) break;
             }

@@ -48,14 +48,14 @@
 
 1714205987 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\defs.cpp
 
-1715611114 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.cpp
+1715625660 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.cpp
 	"Graphics.h"
 	"Button.h"
 	"XAndO.h"
 	<SDL.h>
 	<SDL_image.h>
 
-1715611114 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.h
+1715625660 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	"defs.h"
@@ -69,7 +69,7 @@
 	"defs.h"
 	<SDL.h>
 
-1715611836 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\main.cpp
+1715627448 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\main.cpp
 	<bits/stdc++.h>
 	<SDL.h>
 	<SDL_image.h>
@@ -140,7 +140,7 @@
 	"Graphics.h"
 	"Sound.h"
 
-1715612491 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click1.cpp
+1715626072 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click1.cpp
 	"click1.h"
 	"Graphics.h"
 	"defs.h"
