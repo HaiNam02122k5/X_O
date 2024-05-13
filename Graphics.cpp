@@ -92,6 +92,17 @@ void Graphics::quitSDL()
     SDL_DestroyTexture(Qual);
     Qual = nullptr;
 
+    SDL_DestroyTexture(background3);
+    background3 = nullptr;
+    SDL_DestroyTexture(MusicBut);
+    MusicBut = nullptr;
+    SDL_DestroyTexture(SoundBut);
+    SoundBut = nullptr;
+    SDL_DestroyTexture(nMusicBut);
+    nMusicBut = nullptr;
+    SDL_DestroyTexture(nSoundBut);
+    nSoundBut = nullptr;
+
     IMG_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
@@ -119,6 +130,8 @@ void Graphics::initTexture()
     XWin = loadTexture("img\\Result\\xWin.png");
     Qual = loadTexture("img\\Result\\qual.png");
 
+    background3 = loadTexture("img\\background3.png");
+    BackSetBut = loadTexture("img\\Button\\BackButton1.png");
     MusicBut = loadTexture("img\\Button\\MusicButton1.png");
     SoundBut = loadTexture("img\\Button\\SoundButton1.png");
     nMusicBut = loadTexture("img\\Button\\MusicButton2.png");
@@ -227,6 +240,8 @@ void Graphics::render(const Tictactoe& game)
 void Graphics::backgroundGame(const Tictactoe& game)
 {
     renderTexture(background2,0,0);
+    renderTexture(BackSetBut, 10, 10);
+
     presentScene();
 }
 
@@ -243,5 +258,15 @@ void Graphics::winGame(int kq, Button AgainButton, Button BackButton)
     }
     renderTexture(BackBut, BackButton.posx, BackButton.posy);
     renderTexture(AgainBut, AgainButton.posx, AgainButton.posy);
+    presentScene();
+}
+
+void Graphics::gSetting(Button BackSetButton, Button SoundButton, Button MusicButton)
+{
+    renderTexture(background3, 0, 0);
+    renderTexture(BackSetBut, BackSetButton.posx, BackSetButton.posy);
+    renderTexture(SoundBut, SoundButton.posx, SoundButton.posy);
+    renderTexture(MusicBut, MusicButton.posx, MusicButton.posy);
+
     presentScene();
 }

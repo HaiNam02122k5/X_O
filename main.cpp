@@ -22,6 +22,8 @@ Button AgainButton(AGAIN_BUTTON_X, AGAIN_BUTTON_Y, BUTTON_HE, BUTTON_W);
 Button BackSetButton(10, 10, BUTTON_HE, BUTTON_W);
 Button MusicButton(230, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
 Button SoundButton(320, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
+Button nMusicButton(230, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
+Button nSoundButton(320, 320,SMALL_BUTTON_H, SMALL_BUTTON_W);
 
 void waitPressed()
 {
@@ -47,6 +49,7 @@ int main(int argc, char* argv[])
     bool quitMenu = false;
     bool play = false;
     bool setting = false;
+    bool hMusic = true;
     while(!quitGame){
         //quitGame = true;
         while(!quitMenu){
@@ -88,9 +91,45 @@ int main(int argc, char* argv[])
 
             clickMouse(game, graphic, kq, BackSetButton);
             //cout << kq << endl;
-            graphic.winGame(kq, AgainButton, BackButton);
+            if(kq==3){
+                quitMenu = false;
+                quitGame = false;
+                break;
+            }else{
+                graphic.winGame(kq, AgainButton, BackButton);
 
-            play=false;
+                play=false;
+                SDL_Event e;
+                while(true){
+                    int x=0;
+                    SDL_PollEvent(&e);
+                    switch(e.type){
+                        case SDL_QUIT:
+                            exit(0);
+                            break;
+                        case SDL_MOUSEBUTTONDOWN:
+                            if(BackButton.Inside(&e)){
+                                //cerr << "trong" << endl;
+                                quitMenu = false;
+                                quitGame = false;
+                                x=1;
+                                break;
+                            }
+                            if(AgainButton.Inside(&e)){
+                                play = true;
+                                quitGame = true;
+                                x=2;
+                                break;
+                            }
+                    }
+                    if(x==1) break;
+                    if(x==2) break;
+                }
+            }
+        }
+
+        if(setting){
+            graphic.gSetting(BackSetButton,SoundButton,MusicButton);
             SDL_Event e;
             while(true){
                 int x=0;
@@ -100,33 +139,26 @@ int main(int argc, char* argv[])
                         exit(0);
                         break;
                     case SDL_MOUSEBUTTONDOWN:
-                        if(BackButton.Inside(&e)){
+                        if(BackSetButton.Inside(&e)){
                             //cerr << "trong" << endl;
                             quitMenu = false;
                             quitGame = false;
                             x=1;
                             break;
                         }
-                        if(AgainButton.Inside(&e)){
-                            play = true;
-                            quitGame = true;
-                            x=2;
-                            break;
+                        if(MusicButton.Inside(&e)){
+                            if(hMusic==true){
+                                graphic.renderTexture(graphic.nMusicBut, nMusicButton.posx, nMusicButton.posy);
+                            }
                         }
                 }
                 if(x==1) break;
-                if(x==2) break;
             }
-        }
-
-        if(setting){
-
         }
     }
 
-
-    waitPressed();
-
+    if (gMusic != nullptr) Mix_FreeMusic( gMusic );
+    sGame.quit();
     graphic.quitSDL();
 
 
