@@ -125,11 +125,12 @@
 	"defs.h"
 	<bits/stdc++.h>
 
-1715579714 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\xando.h
+1715780442 e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\xando.h
 	"defs.h"
 	<SDL.h>
+	<bits/stdc++.h>
 
-1715579714 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\xando.cpp
+1715789279 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\xando.cpp
 	"XAndO.h"
 	"defs.h"
 	<bits/stdc++.h>
@@ -140,7 +141,7 @@
 	"Graphics.h"
 	"Sound.h"
 
-1715626072 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click1.cpp
+1715789430 source:e:\workspace\codeblocks\workspace\sdl\gameproject\x_o\click1.cpp
 	"click1.h"
 	"Graphics.h"
 	"defs.h"

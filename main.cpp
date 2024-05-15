@@ -171,6 +171,37 @@ int main(int argc, char* argv[])
                 quitGame = false;
                 play1= false;
                 break;
+            }else{
+                graphic.winGame(kq, AgainButton, BackButton);
+
+                play1=false;
+                SDL_Event e;
+                while(true){
+                    int x=0;
+                    SDL_PollEvent(&e);
+                    switch(e.type){
+                        case SDL_QUIT:
+                            exit(0);
+                            break;
+                        case SDL_MOUSEBUTTONDOWN:
+                            sGame.playSound(gSound, hSound);
+                            if(BackButton.Inside(&e)){
+                                //cerr << "trong" << endl;
+                                quitMenu = false;
+                                quitGame = false;
+                                x=1;
+                                break;
+                            }
+                            if(AgainButton.Inside(&e)){
+                                play1 = true;
+                                quitGame = true;
+                                x=2;
+                                break;
+                            }
+                    }
+                    if(x==1) break;
+                    if(x==2) break;
+                }
             }
         }
 

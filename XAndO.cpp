@@ -31,51 +31,91 @@ void XAndO::move(int ROWs, int COLs)
 //        }
 //    }
 
-/*int XAndO::check(const int x, const int y)
+int XAndO::check(const int x, const int y)
 {
     int clc = (x - BOARD_X1) / CELL_SIZE;
     int clr = (y - BOARD_Y1) / CELL_SIZE;
 
+    // check cheo1
+    int cntcheo1=1;
+    for(int i=1; i<5; i++){
+        if((clr+i>BOARD_SIZER) || (clc+i>BOARD_SIZEC) || (clr-i<0) || (clc-i<0)
+            || board[clr][clc] != board[clr+i][clc+i]
+            || cntcheo1>=5) break;
+        else if(board[clr][clc]==board[clr+i][clc+i]){
+            cntcheo1++;
+        }
+    }
+    for(int i=1; i<5; i++){
+        if((clr-i<0) || (clc-i<0) || (clr+i>BOARD_SIZER) || (clc+i>BOARD_SIZEC)) break;
+        else if(board[clr][clc] != board[clr-i][clc-i]
+            || cntcheo1>=5) break;
+        else if(board[clr][clc]==board[clr-i][clc-i]){
+            cntcheo1++;
+        }
+    }
+    if(cntcheo1>=5) return board[clr][clc];
+
+    // check cheo2
+    int cntcheo2=1;
+    for(int i=1; i<5; i++){
+        if((clr-i<0) || (clc-i<0) || (clr+i>BOARD_SIZER) || (clc+i>BOARD_SIZEC)) break;
+        else if(board[clr][clc] != board[clr-i][clc+i]
+            || cntcheo2>=5) break;
+        else if(board[clr][clc]==board[clr-i][clc+i]){
+            cntcheo2++;
+        }
+    }
+    for(int i=1; i<5; i++){
+        if((clr-i<0) || (clc-i<0) || (clr+i>BOARD_SIZER) || (clc+i>BOARD_SIZEC)) break;
+        else if(board[clr][clc] != board[clr+i][clc-i]
+            || cntcheo2>=5) break;
+        else if(board[clr][clc]==board[clr+i][clc-i]){
+            cntcheo2++;
+        }
+    }
+    if(cntcheo2>=5) return board[clr][clc];
+
     // check cot
-    if(clc>=0 and clc<3 and clr==0){
-        if(board[clr][clc]==board[clr+1][clc] && board[clr][clc]==board[clr+2][clc]) return board[clr+1][clc];
+    int cntcot=1;
+    for(int i=1; i<5; i++){
+        if((clr-i<0) || (clc-i<0) || (clr+i>BOARD_SIZER) || (clc+i>BOARD_SIZEC)) break;
+        else if(board[clr][clc] != board[clr-i][clc]
+            || cntcot>=5) break;
+        else if(board[clr][clc]==board[clr-i][clc]){
+            cntcot++;
+        }
     }
-    if(clc>=0 and clc<3 and clr==1){
-        if(board[clr][clc]==board[clr+1][clc] && board[clr][clc]==board[clr-1][clc]) return board[clr+1][clc];
+    for(int i=1; i<5; i++){
+        if((clr-i<0) || (clc-i<0) || (clr+i>BOARD_SIZER) || (clc+i>BOARD_SIZEC)) break;
+        else if(board[clr][clc] != board[clr+i][clc]
+            || cntcot>=5) break;
+        else if(board[clr][clc]==board[clr+i][clc]){
+            cntcot++;
+        }
     }
-    if(clc>=0 and clc<3 and clr==2){
-        if(board[clr][clc]==board[clr-1][clc] && board[clr][clc]==board[clr-2][clc]) return board[clr-1][clc];
-    }
+    if(cntcot>=5) return board[clr][clc];
 
     //check hang
-    if(clr>=0 and clr<3 and clc==0){
-        if(board[clr][clc]==board[clr][clc+1] && board[clr][clc]==board[clr][clc+2]) return board[clr][clc];
+    int cnthang=1;
+    for(int i=1; i<5; i++){
+        if((clr-i<0) || (clc-i<0) || (clr+i>BOARD_SIZER) || (clc+i>BOARD_SIZEC)) break;
+        else if(board[clr][clc] != board[clr][clc+i]
+            || cnthang>=5) break;
+        else if(board[clr][clc]==board[clr][clc+i]){
+            cnthang++;
+        }
     }
-    if(clr>=0 and clr<3 and clc==1){
-        if(board[clr][clc]==board[clr][clc+1] && board[clr][clc]==board[clr][clc-1]) return board[clr][clc];
+    for(int i=1; i<5; i++){
+        if((clr-i<0) || (clc-i<0) || (clr+i>BOARD_SIZER) || (clc+i>BOARD_SIZEC)) break;
+        else if(board[clr][clc] != board[clr][clc-i]
+            || cnthang>=5) break;
+        else if(board[clr][clc]==board[clr][clc-i]){
+            cnthang++;
+        }
     }
-    if(clr>=0 and clr<3 and clc==2){
-        if(board[clr][clc]==board[clr][clc-1] && board[clr][clc]==board[clr][clc-2]) return board[clr][clc];
-    }
-
-    // check cheo
-    if(clr==0 and clc==0){
-        if(board[clr][clc]==board[clr+1][clc+1] && board[clr][clc]==board[clr+2][clc+2]) return board[clr][clc];
-    }
-    if(clr==0 and clc==2){
-        if(board[clr][clc]==board[clr+1][clc-1] && board[clr][clc]==board[clr+2][clc-2]) return board[clr][clc];
-    }
-    if(clr==1 and clc==1){
-        if(board[clr][clc]==board[clr-1][clc-1] && board[clr][clc]==board[clr+1][clc+1]) return board[clr][clc];
-        if(board[clr][clc]==board[clr-1][clc+1] && board[clr][clc]==board[clr+1][clc-1]) return board[clr][clc];
-    }
-    if(clr==2 and clc==0){
-        if(board[clr][clc]==board[clr-1][clc+1] && board[clr][clc]==board[clr-2][clc+2]) return board[clr][clc];
-    }
-    if(clr==2 and clc==2){
-        if(board[clr][clc]==board[clr-1][clc-1] && board[clr][clc]==board[clr-2][clc-2]) return board[clr][clc];
-    }
+    if(cnthang>=5) return board[clr][clc];
 
     return 0;
-}*/
+}
 

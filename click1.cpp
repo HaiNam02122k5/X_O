@@ -30,21 +30,18 @@ void clickMouse1(XAndO& game, Graphics& graphic, int &kq, Button BackSet, Sound 
                 exit(0);
                 break;
             case SDL_MOUSEBUTTONDOWN:
-
                 if(BackSet.Inside(&event)){
                     sGame.playSound(gSound, hSound);
-                    count=10;
+                    count=1000;
                     break;
                 }
                 SDL_GetMouseState(&x, &y);
                 //cerr << x << " " << y << endl;
                 processClick1(x, y, game, count, sGame, gSound, hSound);
                 graphic.render1(game);
-//              cerr << count << endl;
-//              game.check(x,y);
                 break;
         }
-        /*if(game.check(x,y)==1){
+        if(game.check(x,y)==1){
             cout << "O Win" << endl;
             kq=1;
             break;
@@ -54,12 +51,12 @@ void clickMouse1(XAndO& game, Graphics& graphic, int &kq, Button BackSet, Sound 
             kq=2;
             break;
         }
-        if(count==9){
+        if(count==BOARD_SIZEC*BOARD_SIZER){
             kq=0;
             cout << "Hoa" << endl;
             break;
-        }*/
-        if(count==10){
+        }
+        if(count==1000){
             kq=3;
             break;
         }

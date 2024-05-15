@@ -4,6 +4,7 @@
 #include "defs.h"
 
 #include <SDL.h>
+#include <bits/stdc++.h>
 
 struct XAndO
 {
@@ -13,7 +14,7 @@ struct XAndO
     void init();
     void move(int ROWs, int COLs);
     //void print();
-    //int check(const int x, const int y);
+    int check(const int x, const int y);
 };
 
 #endif // TICTACTOE_H
