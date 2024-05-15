@@ -14,7 +14,7 @@ void processClick1(int x, int y, XAndO& game, int& count, Sound sGame, Mix_Chunk
     if(game.board[clickedRow][clickedCol]==0 and x>BOARD_X1 and y>BOARD_Y1 and (x<BOARD_X1+BOARD_SIZEC*CELL_SIZE) and (y<BOARD_Y1+BOARD_SIZER*CELL_SIZE)){
         game.move(clickedRow, clickedCol);
         sGame.playSound(gSound, hSound);
-        //count ++;
+        count ++;
     }
 }
 
@@ -60,6 +60,6 @@ void clickMouse1(XAndO& game, Graphics& graphic, int &kq, Button BackSet, Sound 
             kq=3;
             break;
         }
-        SDL_Delay(50);
+        //SDL_Delay(50);
     }
 }
